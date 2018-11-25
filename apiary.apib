@@ -1,0 +1,434 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# national-portal
+
+Api documentation for National Portal
+
+## api.protal.gov.bd [/sites/{domain_name}/{lang}]
+```
+ api.portal.gov.bd/sites?domain_name={domain_name}&lang={bn/en}
+
+ For example : we want to get sites information of pmo.gov.bd of bangla version.
+
+ api.portal.gov.bd/sites?domain_name=pmo.gov.bd&lang=bn
+ 
+```
+
+### Site Information  [GET]
+This api will get domain name and language as paremeter and go to central database with this credential and load all the site information for user.
+
++ Parameters
+    + domain_name - "pmo.gov.bd",
+    + lang - "bn"
+
++ Response 200 (application/json)
+
+        [
+            {
+                "domain_id": "123456",
+                "lang"     : "bn",
+                "logo": 
+                    {
+                        "logo_image": "https://pmo.gov.bd/themes/responsive_npf/img/logo/logo.png",
+                        "alt":  "logo"
+                    },
+                "title":
+                    {
+                        "title"  : "প্রধানমন্ত্রীর কার্যালয়",
+                        "slogan" : "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার"
+                    }
+                
+            }
+        ]
+        
+## api.portal.gov.bd [/contents/{content_type}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&domain_name={domain_name}&lang={bn/en}
+ 
+ For example : we want to get list of content types of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=news&domain_name=pmo.gov.bd&lang=bn
+ 
+ ```
+
+### List of Contents Type [GET]
+
++ Parameters
+    + content_type - "news",
+    + domain_id - "123456",
+    + lang - "bn"
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "news",
+                "content_name": "নোটিশ বোর্ড",
+                "content":[
+                        {
+                            "id": "1",
+                            "title":"পাসপোর্ট করার অনুমতি [মোঃ শাহজাহান, বৈদ্যুতিক কারিগর, গণপূর্ত উপ-বিভাগ –এর স্ত্রীর জন্য]",
+                            "url": "https://pmo.gov.bd/site/notices/44f0a2c7-cb00-4b8c-8e63-9170dd19fa29/%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AE%E0%A6%A4%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%83-%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%A8-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%97%E0%A6%B0-%E0%A6%97%E0%A6%A3%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A4-%E0%A6%89%E0%A6%AA-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97-%E2%80%93%E0%A6%8F%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%9C%E0%A6%A8"
+                            
+                        },
+                        {
+                            "id": "2",
+                            "title":"জিও : চিকিৎসা [ভারত] [মোঃ আব্দুর রহমান মিয়া, উপ-সচিব, বেপজা]",
+                            "url":"https://pmo.gov.bd/site/notices/438a97ff-08ee-4377-8dbd-f1d1c397b827/%E0%A6%9C%E0%A6%BF%E0%A6%93--%E0%A6%9A%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A7%8E%E0%A6%B8%E0%A6%BE-%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%AE%E0%A7%8B%E0%A6%83-%E0%A6%86%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%B0-%E0%A6%B0%E0%A6%B9%E0%A6%AE%E0%A6%BE%E0%A6%A8-%E0%A6%AE%E0%A6%BF%E0%A7%9F%E0%A6%BE-%E0%A6%89%E0%A6%AA-%E0%A6%B8%E0%A6%9A%E0%A6%BF%E0%A6%AC-%E0%A6%AC%E0%A7%87%E0%A6%AA%E0%A6%9C%E0%A6%BE"
+    
+                        },
+                        {
+                            "id": "3",
+                            "title":"জিও : [যুক্তরাজ্য] [নাফিসা বানু, প্রধান হিসাবরক্ষক ও ফিন্যান্স অফিসার, বেপজা, প্রমকা]",
+                            "url":"https://pmo.gov.bd/site/notices/16a2b9f4-ab8d-4789-a803-e9cdd8b59145/%E0%A6%9C%E0%A6%BF%E0%A6%93--%E0%A6%AF%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A7%8D%E0%A6%AF-%E0%A6%A8%E0%A6%BE%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%81-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A7%E0%A6%BE%E0%A6%A8-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%95-%E0%A6%93-%E0%A6%AB%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%B8-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%B0-%E0%A6%AC%E0%A7%87%E0%A6%AA%E0%A6%9C%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AE%E0%A6%95%E0%A6%BE"
+                            
+                        },
+                        {
+                            "id": "4",
+                            "title": "পাসপোর্ট অনাপত্তি সনদ [মোঃ আমিনুল ইসলাম, হিসাবরক্ষণ কর্মকর্তা, আশ্রায়ণ-২ প্রকল্প, প্রমকা -এর পুত্র ও কন্যার জন্য]",
+                            "url": "https://pmo.gov.bd/site/notices/ff5c75bf-4144-4be8-b229-aa477219c678/%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%85%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%B8%E0%A6%A8%E0%A6%A6-%E0%A6%AE%E0%A7%8B%E0%A6%83-%E0%A6%86%E0%A6%AE%E0%A6%BF%E0%A6%A8%E0%A7%81%E0%A6%B2-%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE-%E0%A6%B9%E0%A6%BF%E0%A6%B8%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A3-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE-%E0%A6%86%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A7%9F%E0%A6%A3-%E0%A7%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%AA%E0%A7%8D%E0%A6%B0"
+                        },
+                        {
+                            "id": "5",
+                            "title": "বহিঃ বাংলাদেশ ছুটি [ভারত] [অজিত কুমার রায়, অফিস সহকারী-কাম-কম্পিউটার মুদ্রাক্ষরিক]",
+                            "url":"https://pmo.gov.bd/site/notices/7d312db5-919c-4692-b748-4e958e02643b/%E0%A6%AC%E0%A6%B9%E0%A6%BF%E0%A6%83-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B6-%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF-%E0%A6%AD%E0%A6%BE%E0%A6%B0%E0%A6%A4-%E0%A6%85%E0%A6%9C%E0%A6%BF%E0%A6%A4-%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A6%BE%E0%A6%B0-%E0%A6%B0%E0%A6%BE%E0%A7%9F-%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8-%E0%A6%B8%E0%A6%B9%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%95%E0%A6%BE%E0%A6%AE-%E0%A6%95%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%BF%E0%A6%89%E0%A6%9F%E0%A6%BE%E0%A6%B0-%E0%A6%AE%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%B0%E0%A6%BF%E0%A6%95"
+                        }
+                ]
+            }
+            
+        ]
+## api.portal.gov.bd [/contents/{content_type}/{content_id}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&content_id={content_id}&domain_name={domain_name}&lang={bn/en}
+ 
+ For example : we want to show a content types of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=news&content_id=1&domain_name=pmo.gov.bd&lang=bn
+ 
+ ```
+### Show single content [GET]
+
++ Parameters
+    + content_type - "news",
+    + domain_id - "123456",
+    + lang - "bn",
+    + content_id - "1" 
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "news",
+                "content_name": "নোটিশ",
+                "content":[
+                        {
+                            "id": "1",
+                            "title":"পাসপোর্ট করার অনুমতি [মোঃ শাহজাহান, বৈদ্যুতিক কারিগর, গণপূর্ত উপ-বিভাগ –এর স্ত্রীর জন্য]",
+                            "url": "https://pmo.gov.bd/site/notices/44f0a2c7-cb00-4b8c-8e63-9170dd19fa29/%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AE%E0%A6%A4%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%83-%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%A8-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%97%E0%A6%B0-%E0%A6%97%E0%A6%A3%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A4-%E0%A6%89%E0%A6%AA-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97-%E2%80%93%E0%A6%8F%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%9C%E0%A6%A8"
+                            
+                        }
+                ]
+            }
+            
+        ]
+        
+## api.portal.gov.bd [/contents/{content_type}/taxonomy/{taxonomy_type}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&taxonomy_type={taxonomy_type}&domain_name={domain_name}&lang={bn/en}
+ 
+ For example : we want to show the list of taxonomy of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=speach&taxonomy_type=অন্যান্য-ভাষণ&domain_name=pmo.gov.bd&lang=bn
+ 
+ ```
+### List of texonomy [GET]
+
++ Parameters
+    + content_type - "speach",
+    + domain_id - "123456",
+    + lang - "bn",
+    + taxonomy_type - "অন্যান্য-ভাষণ"
+   
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "speach",
+                "taxonomy_type": "অন্যান্য-ভাষণ",
+                "content_name": "প্রধানমন্ত্রীর ভাষণ",
+                "content":[
+                        {
+                            "id": "1",
+                            "title": "বিএমএ আয়োজিত চিকিৎসক সম্মেলন ২০১৮ [অক্টোবর ০৭, ২০১৮]",
+                            "url": "https://pmo.portal.gov.bd/sites/default/files/files/pmo.portal.gov.bd/pm_speech/75089810_cec2_4299_8303_5e176bb77794/doctors_conf_071018.pdf"
+                            
+                        },
+                        {
+                            "id": "2",
+                            "title": "লায়ন্স ক্লাবস্ ইন্টারন্যাশনাল-এর নব নির্বাচিত ‘আন্তর্জাতিক পরিচালক’ লায়ন কাজী আকরাম উদ্দিন আহমদ, পিএমজেএফ-এর সংবর্ধনা অনুষ্ঠান [অক্টোবর ০৬, ২০১৮]",
+                            "url": "https://pmo.portal.gov.bd/sites/default/files/files/pmo.portal.gov.bd/pm_speech/35cd3cc0_a500_44ed_ad6d_9c763ab036a0/lion_club_061018.pdf"
+                        },
+                        {
+                            "id": "3",
+                            "title": "High-level discussion on Economic Growth through Women’s Empowerment [September 27, 2018]",
+                            "url": "https://pmo.portal.gov.bd/sites/default/files/files/pmo.portal.gov.bd/pm_speech/6ea5441c_99cb_44ec_a432_d8f4ef5d2346/womens_empower_270918.pdf"
+                        },
+                        {
+                            "id": "4",
+                            "title": "Global Hope Coalition 2018 Special Recognition for Outstanding Leadership Award [September 27, 2018]",
+                            "url": "https://pmo.portal.gov.bd/sites/default/files/files/pmo.portal.gov.bd/pm_speech/e5aa3349_9912_4f8a_a40e_c9c10c4e9119/leadership_award_270918.pdf"
+                        },
+                        {
+                            "id": "5",
+                            "title": "Meeting of OIC Contact Group on Rohingya Muslim Minority [September 27, 2018]",
+                            "url": "https://pmo.portal.gov.bd/sites/default/files/files/pmo.portal.gov.bd/pm_speech/a796e0ec_332e_499c_bd2a_c210263bab8d/OIC_Contact_Group_Rohingya_270918.pdf"
+                        }
+                ]
+            }
+            
+        ]
+        
+        
+## api.portal.gov.bd [/contents/{content_type}/taxonomy/{taxonomy_type}/{taxonomy_id}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&taxonomy_id={taxonomy_id}&taxonomy_name={taxonomy_name}&domain_name={domain_name}&lang={bn/en}
+ 
+ For example : we want to show a single taxonomy of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=speach&taxonomy_type=অন্যান্য-ভাষণ&taxonomy_id=2&domain_name=pmo.gv.bd&lang=bn
+ 
+ ```
+### Show single Taxonomy [GET]
+
++ Parameters
+    + content_type - "speach",
+    + domain_id - "123456",
+    + lang - "bn",
+    + taxonomy_type - "অন্যান্য-ভাষণ",
+    + taxonomy_id - "2"
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "speach",
+                "taxonomy_type": "অন্যান্য-ভাষণ",
+                "content_name": "প্রধানমন্ত্রীর ভাষণ",
+                "content":[
+                        {
+                            "id": "2",
+                            "title": "লায়ন্স ক্লাবস্ ইন্টারন্যাশনাল-এর নব নির্বাচিত ‘আন্তর্জাতিক পরিচালক’ লায়ন কাজী আকরাম উদ্দিন আহমদ, পিএমজেএফ-এর সংবর্ধনা অনুষ্ঠান [অক্টোবর ০৬, ২০১৮]",
+                            "url": "https://pmo.portal.gov.bd/sites/default/files/files/pmo.portal.gov.bd/pm_speech/35cd3cc0_a500_44ed_ad6d_9c763ab036a0/lion_club_061018.pdf"
+                            
+                        }
+                ]
+            }
+            
+        ]
+        
+        
+## api.portal.gov.bd [/contents/{content_type}/filter/{id}/{title}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&filter={id};{title}&domain_id={domain_id}&lang={bn/en}
+ 
+ For example : we want to filte content type by id and title of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=speach&filter=id;title&domain_name=pmo.gv.bd&lang=bn
+ 
+ ```
+### Filter Content Type [GET]
+
++ Parameters
+    + content_type - "speach",
+    + domain_id - "123456",
+    + lang - "bn"
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "speach",
+                "content_name": "প্রধানমন্ত্রীর ভাষণ",
+                "content":[
+                        {
+                            "id": "1",
+                            "title": "বিএমএ আয়োজিত চিকিৎসক সম্মেলন ২০১৮ [অক্টোবর ০৭, ২০১৮]"
+                            
+                            
+                        },
+                        {
+                            "id": "2",
+                            "title": "লায়ন্স ক্লাবস্ ইন্টারন্যাশনাল-এর নব নির্বাচিত ‘আন্তর্জাতিক পরিচালক’ লায়ন কাজী আকরাম উদ্দিন আহমদ, পিএমজেএফ-এর সংবর্ধনা অনুষ্ঠান [অক্টোবর ০৬, ২০১৮]"
+                           
+                        },
+                        {
+                            "id": "3",
+                            "title": "High-level discussion on Economic Growth through Women’s Empowerment [September 27, 2018]"
+                           
+                        },
+                        {
+                            "id": "4",
+                            "title": "Global Hope Coalition 2018 Special Recognition for Outstanding Leadership Award [September 27, 2018]"
+                        },
+                        {
+                            "id": "5",
+                            "title": "Meeting of OIC Contact Group on Rohingya Muslim Minority [September 27, 2018]"
+                            
+                        }
+                ]
+            }
+            
+        ]
+        
+## api.portal.gov.bd [/contents/{content_type}/filter/{id}/{title}/order_by/{order_by}/sorted_by/{sorted_by}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&filter={id};{title}&order_by={order_by}&sorted_by={sorted_by}&domain_id={domain_id}&lang={bn/en}
+ 
+ For example : we want to filte content type by id and title and also order by id and sorted the data in decending order of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=speach&filter=id;title&order_by=id&sorted_by=desc&domain_name=pmo.gv.bd&lang=bn
+ 
+ ```
+### Filter and sort Content Type [GET]
+
++ Parameters
+    + content_type - "speach",
+    + domain_id - "123456",
+    + lang - "bn",
+    + order_by - "id",
+    + sorted_by - "desc"
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "speach",
+                "content_name": "প্রধানমন্ত্রীর ভাষণ",
+                "content":[
+                        {
+                            "id": "5",
+                            "title": "Meeting of OIC Contact Group on Rohingya Muslim Minority [September 27, 2018]"
+                            
+                        },
+                        {
+                            "id": "4",
+                            "title": "Global Hope Coalition 2018 Special Recognition for Outstanding Leadership Award [September 27, 2018]"
+                        },
+                        {
+                            "id": "3",
+                            "title": "High-level discussion on Economic Growth through Women’s Empowerment [September 27, 2018]"
+                           
+                        },
+                        {
+                            "id": "2",
+                            "title": "লায়ন্স ক্লাবস্ ইন্টারন্যাশনাল-এর নব নির্বাচিত ‘আন্তর্জাতিক পরিচালক’ লায়ন কাজী আকরাম উদ্দিন আহমদ, পিএমজেএফ-এর সংবর্ধনা অনুষ্ঠান [অক্টোবর ০৬, ২০১৮]"
+                           
+                        },
+                        {
+                            "id": "1",
+                            "title": "বিএমএ আয়োজিত চিকিৎসক সম্মেলন ২০১৮ [অক্টোবর ০৭, ২০১৮]"
+                            
+                            
+                        }
+                        
+                        
+                        
+                        
+                ]
+            }
+            
+        ]
+        
+        
+        
+        
+## api.portal.gov.bd [/contents/{content_type}/filter/{id}/{title}/order_by/{order_by}/sorted_by/{sorted_by}/limit/{limit}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&filter={id};{title}&order_by={order_by}&sorted_by={sorted_by}&limit={limit}&domain_id={domain_id}&lang={bn/en}
+ 
+ For example : we want to filte content type by id and title and also order by id and sorted the data in decending order and also sort by limit of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=speach&filter=id;title&order_by=id&sorted_by=desc&limit=3&domain_name=pmo.gv.bd&lang=bn
+ 
+ ```
+### Filter and sort Content Type by Limit [GET]
+
++ Parameters
+    + content_type - "speach",
+    + domain_id - "123456",
+    + lang - "bn",
+    + order_by - "id",
+    + sorted_by - "desc",
+    + limit - "3"
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "speach",
+                "content_name": "প্রধানমন্ত্রীর ভাষণ",
+                "content":[
+                        {
+                            "id": "5",
+                            "title": "Meeting of OIC Contact Group on Rohingya Muslim Minority [September 27, 2018]"
+                            
+                        },
+                        {
+                            "id": "4",
+                            "title": "Global Hope Coalition 2018 Special Recognition for Outstanding Leadership Award [September 27, 2018]"
+                        },
+                        {
+                            "id": "3",
+                            "title": "High-level discussion on Economic Growth through Women’s Empowerment [September 27, 2018]"
+                           
+                        }
+                ]
+            }
+            
+        ]
+        
+        
+## api.portal.gov.bd [/contents/{content_type}/search/{title}/{domain_id}/{lang}]
+ ```
+ api.portal.gov.bd/contents?content_type={content_type}&search={title}&domain_name={domain_name}&lang={bn/en}
+ 
+ For example : we want to search a content types by title of pmo.gov.bd in bangla.
+ 
+ api.portal.gov.bd/contents?content_type=news&search=পাসপোর্ট করার অনুমতি [মোঃ শাহজাহান, বৈদ্যুতিক কারিগর, গণপূর্ত উপ-বিভাগ –এর স্ত্রীর জন্য]&domain_name=pmo.gov.bd&lang=bn
+ 
+ ```
+### Search a single content type[GET]
+
++ Parameters
+    + content_type - "news",
+    + domain_id - "123456",
+    + lang - "bn",
+    + title - "পাসপোর্ট করার অনুমতি [মোঃ শাহজাহান, বৈদ্যুতিক কারিগর, গণপূর্ত উপ-বিভাগ –এর স্ত্রীর জন্য]" 
+    
+
++ Response 200 (application/json)
+
+        [
+            {
+                "content_type": "news",
+                "content_name": "নোটিশ",
+                "content":[
+                        {
+                            "id": "1",
+                            "title":"পাসপোর্ট করার অনুমতি [মোঃ শাহজাহান, বৈদ্যুতিক কারিগর, গণপূর্ত উপ-বিভাগ –এর স্ত্রীর জন্য]",
+                            "url": "https://pmo.gov.bd/site/notices/44f0a2c7-cb00-4b8c-8e63-9170dd19fa29/%E0%A6%AA%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%B0-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AE%E0%A6%A4%E0%A6%BF-%E0%A6%AE%E0%A7%8B%E0%A6%83-%E0%A6%B6%E0%A6%BE%E0%A6%B9%E0%A6%9C%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%A8-%E0%A6%AC%E0%A7%88%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%97%E0%A6%B0-%E0%A6%97%E0%A6%A3%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A4-%E0%A6%89%E0%A6%AA-%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97-%E2%80%93%E0%A6%8F%E0%A6%B0-%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0-%E0%A6%9C%E0%A6%A8"
+                            
+                        }
+                ]
+            }
+            
+        ]
